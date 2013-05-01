@@ -47,7 +47,7 @@ my $api_basic_login = b64enc($message);
 
 my $hmac = Digest::HMAC->new($secret_key, "Digest::MD5");
 $hmac->add($message);
-my $mac = $hmac->digest;
+my $mac = $hmac->b64digest;
 
 my $api_basic_password = b64enc($mac);
 
