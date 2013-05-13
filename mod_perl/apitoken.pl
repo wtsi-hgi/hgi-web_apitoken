@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-my $token_lifetime_seconds = 600;
+my $token_lifetime_seconds = 3600;
 
 my %mimetypes = (
     "*"           => {
