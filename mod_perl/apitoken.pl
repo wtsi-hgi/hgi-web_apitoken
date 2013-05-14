@@ -101,13 +101,15 @@ sub print_output {
     if($handler eq "plaintext") {
 	print "access_token=".$api_access_token;
 	print "&token_type=bearer";
+	print "&expires_in=".$token_lifetime_seconds;
 	print "&api_basic_login=$api_basic_login";
 	print "&api_basic_password=$api_basic_password";
     } elsif($handler eq "json") {
 	print "{\n";
-	print '"access_token": "' . $api_access_token . '"' . "\n";
-	print '"token_type": "bearer"' . "\n";
-	print '"api_basic_login": "' . $api_basic_login . '"' . "\n";
+	print '"access_token": "' . $api_access_token . '",' . "\n";
+	print '"token_type": "bearer",' . "\n";
+	print '"expires_in": ' . $token_lifetime_seconds . ',' . "\n";
+	print '"api_basic_login": "' . $api_basic_login . '",' . "\n";
 	print '"api_basic_password": "' . $api_basic_password . '"' . "\n";
 	print "}\n";
     } elsif($handler eq "html") {
@@ -122,6 +124,8 @@ sub print_output {
       <dd>$api_access_token</dd>
       <dt>token_type</dt>
       <dd>bearer</dd>
+      <dt>expires_in</dt>
+      <dd>$token_lifetime_seconds</dd>
       <dt>api_basic_login</dt>
       <dd>$api_basic_login</dd>
       <dt>api_basic_password</dt>
@@ -144,6 +148,8 @@ EOF
       <dd>$api_access_token</dd>
       <dt>token_type</dt>
       <dd>bearer</dd>
+      <dt>expires_in</dt>
+      <dd>$token_lifetime_seconds</dd>
       <dt>api_basic_login</dt>
       <dd>$api_basic_login</dd>
       <dt>api_basic_password</dt>
@@ -158,6 +164,7 @@ EOF
 <OAuth>
   <token_type>bearer</token_type>
   <access_token>$api_access_token</access_token>
+  <expires_in>$token_lifetime_seconds</expires_in>
   <api_basic_login>$api_basic_login</api_basic_login>
   <api_basic_password>$api_basic_password</api_basic_password>
 </OAuth>
