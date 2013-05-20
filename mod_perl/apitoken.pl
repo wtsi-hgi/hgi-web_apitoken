@@ -49,7 +49,7 @@ my $hmac = Digest::HMAC->new($secret_key, "Digest::MD5");
 $hmac->add($message);
 my $mac = $hmac->b64digest;
 
-my $api_basic_password = b64enc($mac);
+my $api_basic_password = $mac;
 
 my $api_access_token = b64enc($message . ':' . $mac);
 
